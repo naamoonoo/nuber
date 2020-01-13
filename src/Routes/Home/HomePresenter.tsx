@@ -1,13 +1,11 @@
-import React from "react";
-import { RouteComponentProps } from "react-router-dom";
-// import * as S from "./HomeStyle";
+import React from 'react';
+import * as S from './HomeStyle';
 
-interface IProps extends RouteComponentProps {}
+interface IProps{}
 
 const HomePresenter: React.FC<IProps> = () => {
 	return <div>HomePresenter</div>;
 };
 
-HomePresenter.propTypes = {};
-
 export default HomePresenter;
+
