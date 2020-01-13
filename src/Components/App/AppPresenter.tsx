@@ -15,21 +15,22 @@ import Settings from "../../Routes/Settings";
 import VerifyPhone from "../../Routes/VerifyPhone";
 import SocialLogin from "../../Routes/SocialLogin";
 import FindAddress from "../../Routes/FindAddress";
+import { useMutation } from "@apollo/react-hooks";
+import { USER_LOG_OUT } from "./AppQueries.local";
 
 interface IProps {
 	isLoggedIn: boolean;
 }
 
 const AppPresenter: React.FC<IProps> = ({ isLoggedIn }) => {
-	// const [logOut, { data, error, client }] = useMutation(USER_LOG_OUT);
+	const [logOut, { data, error, client }] = useMutation(USER_LOG_OUT);
 	return (
 		<BrowserRouter>
 			{isLoggedIn ? <LoggedInRoutes /> : <LoggedOutRoutes />}
+			<div>
+				{isLoggedIn && <button onClick={() => logOut()}>logout</button>}
+			</div>
 		</BrowserRouter>
-		// <div>
-		// 	<div>You are {isLoggedIn ? "In" : "Out"}</div>
-		// 	{isLoggedIn && <button onClick={() => logOut()}>logout</button>}
-		// </div>
 	);
 };
 
