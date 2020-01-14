@@ -10,6 +10,7 @@ import PhoneLogin from "../../Routes/PhoneLogin";
 import Places from "../../Routes/Places";
 import Ride from "../../Routes/Ride";
 import Settings from "../../Routes/Settings";
+import SignUp from "../../Routes/SignUp";
 import SocialLogin from "../../Routes/SocialLogin";
 import VerifyPhone from "../../Routes/VerifyPhone";
 import { USER_LOG_OUT } from "../../SharedQueries.local";
@@ -24,7 +25,14 @@ const AppPresenter: React.FC<IProps> = ({ isLoggedIn }) => {
 		<BrowserRouter>
 			{isLoggedIn ? <LoggedInRoutes /> : <LoggedOutRoutes />}
 			<div>
-				{isLoggedIn && <button onClick={() => logOut()}>logout</button>}
+				{isLoggedIn && (
+					<button
+						style={{ marginTop: "20px", width: "100%" }}
+						onClick={() => logOut()}
+					>
+						logout
+					</button>
+				)}
 			</div>
 		</BrowserRouter>
 	);
@@ -35,6 +43,7 @@ const LoggedOutRoutes: React.FC = () => (
 		<Route path={"/"} exact={true} component={Login} />
 		<Route path={"/phone-login"} component={PhoneLogin} />
 		<Route path={"/verify-phone"} component={VerifyPhone} />
+		<Route path={"/sign-up"} component={SignUp} />
 		<Route path={"/social-login"} component={SocialLogin} />
 		<Redirect path={"*"} to={"/"} />
 	</Switch>
