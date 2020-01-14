@@ -1,4 +1,3 @@
-import { useMutation } from "@apollo/react-hooks";
 import React from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import AddPlace from "../../Routes/AddPlace";
@@ -13,27 +12,15 @@ import Settings from "../../Routes/Settings";
 import SignUp from "../../Routes/SignUp";
 import SocialLogin from "../../Routes/SocialLogin";
 import VerifyPhone from "../../Routes/VerifyPhone";
-import { USER_LOG_OUT } from "../../SharedQueries.local";
 
 interface IProps {
 	isLoggedIn: boolean;
 }
 
 const AppPresenter: React.FC<IProps> = ({ isLoggedIn }) => {
-	const [logOut, { data, error, client }] = useMutation(USER_LOG_OUT);
 	return (
 		<BrowserRouter>
 			{isLoggedIn ? <LoggedInRoutes /> : <LoggedOutRoutes />}
-			<div>
-				{isLoggedIn && (
-					<button
-						style={{ marginTop: "20px", width: "100%" }}
-						onClick={() => logOut()}
-					>
-						logout
-					</button>
-				)}
-			</div>
 		</BrowserRouter>
 	);
 };
