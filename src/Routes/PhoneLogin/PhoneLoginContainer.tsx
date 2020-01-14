@@ -16,9 +16,8 @@ const PhoneLoginContainer: React.FC<RouteComponentProps> = ({ history }) => {
 		PhoneVerification,
 		PhoneVerificationVariables
 	>(VERIFY_PHONE, {
-		// tslint:disable-next-line: no-shadowed-variable
-		onCompleted: ({ PhoneVerification }) => {
-			const { res, error } = PhoneVerification;
+		onCompleted: ({ PhoneVerification: PhoneVerificationResult }) => {
+			const { res, error } = PhoneVerificationResult;
 			if (res) {
 				toast.success("SMS has been sent with verification code", {
 					autoClose: 1900
@@ -31,6 +30,7 @@ const PhoneLoginContainer: React.FC<RouteComponentProps> = ({ history }) => {
 				}, 2000);
 			} else {
 				toast.error(error);
+				history.push("/phone-login");
 			}
 		},
 		variables: { phoneNumber: phoneNumberWithCode }

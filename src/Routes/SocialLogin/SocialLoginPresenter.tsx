@@ -12,7 +12,21 @@ const SocialLoginPresenter: React.FC<IProps> = ({ a }) => {
 		<S.Container>
 			<S.Title>Choose an account</S.Title>
 			<S.BackArrowExtended backTo={"/"} />
-			{/* <FacebookLogin
+			<FaceBookIcon />
+			<FacebookLogin
+				appId="100003174179004"
+				autoLoad={true}
+				fields="name,email,picture"
+				callback={() => console.log("facebook")}
+			/>
+		</S.Container>
+	);
+};
+
+export default SocialLoginPresenter;
+
+{
+	/* <FacebookLogin
 				appId="1718196768212364"
 				autoLoad={false}
 				fields="name,first_name,last_name,email"
@@ -25,16 +39,5 @@ const SocialLoginPresenter: React.FC<IProps> = ({ a }) => {
 						Facebook
 					</S.Link>)
 				}}
-			/> */}
-			<FaceBookIcon />
-			<FacebookLogin
-				appId="1088597931155576"
-				autoLoad={true}
-				fields="name,email,picture"
-				callback={() => console.log("facebook")}
-			/>
-		</S.Container>
-	);
-};
-
-export default SocialLoginPresenter;
+			/> */
+}
