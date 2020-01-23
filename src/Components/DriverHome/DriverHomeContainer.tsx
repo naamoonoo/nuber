@@ -79,7 +79,7 @@ const DriverHomeContainer: React.FC<IProps> = ({ history }) => {
 
 	const onAcceptHandler = (rideId: number) => {
 		takeRequestMutation({ variables: { rideId } });
-		history.push(Routes.RIDE, { rideId });
+		history.push(`${Routes.RIDE}${rideId}`);
 	};
 
 	// even ride queue updated, it still showing ride popup

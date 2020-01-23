@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { toast } from "react-toastify";
 import Routes from "../../Routes";
+import { UPDATE_RIDE } from "../../SharedQueries";
 import {
 	GetNearbyDrivers,
 	GetRideById,
@@ -23,8 +24,7 @@ import PassengerHomePresenter from "./PassengerHomePresenter";
 import {
 	GET_NEARBY_DRIVERS,
 	GET_RIDE_BY_ID,
-	REQUEST_RIDE,
-	UPDATE_RIDE
+	REQUEST_RIDE
 } from "./PassengerHomeQueries";
 
 interface IProps extends RouteComponentProps {
@@ -72,9 +72,7 @@ const PassengerHomeContainer: React.FC<IProps> = ({
 			if (res && ride) {
 				if (ride.status === "ACCEPTED") {
 					stopPolling();
-					history.push(Routes.RIDE, {
-						rideId
-					});
+					history.push(`${Routes.RIDE}${rideId}`);
 				}
 			} else {
 				// [fix]
