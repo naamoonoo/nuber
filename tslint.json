@@ -4,14 +4,15 @@
 	  "max-classes-per-file": false,
 	  "jsx-no-lambda": false,
 	  "no-console": false,
-	  "no-empty-interface": false
+	  "no-empty-interface": false,
+	  "no-shadowed-variable" : false
 	},
 	"linterOptions": {
 	  "exclude": [
 		"config/**/*.js",
 		"node_modules/**/*.ts",
 		"coverage/lcov-report/*.js",
-		"src/countries.ts"
+		"src/utils/countries.ts"
 	  ]
 	}
   }

@@ -1,13 +1,10 @@
 import { gql } from "apollo-boost";
 
-export const GET_CURRENT_USER = gql`
-	query {
-		GetCurrentUser {
+export const REPORT_MOVEMENT = gql`
+	mutation ReportMovement($lastLng: Float!, $lastLat: Float!) {
+		ReportMovement(lastLng: $lastLng, lastLat: $lastLat) {
 			res
 			error
-			user {
-				fullName
-			}
 		}
 	}
 `;

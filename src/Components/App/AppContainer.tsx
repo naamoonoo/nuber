@@ -8,16 +8,7 @@ import AppPresenter from "./AppPresenter";
 import { IS_LOGGED_IN } from "./AppQueries.local";
 
 const AppContainer: React.FC = () => {
-	const { loading, error, data } = useQuery(IS_LOGGED_IN);
-
-	if (loading) {
-		return <p>Loading...</p>;
-	}
-	if (error) {
-		return <p>Error :(</p>;
-	}
-
-	console.log(data);
+	const { data } = useQuery(IS_LOGGED_IN);
 
 	return (
 		<Fragment>

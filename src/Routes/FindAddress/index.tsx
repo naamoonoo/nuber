@@ -1,7 +1,3 @@
-import React from "react";
+import FindAddressContainer from "./FindAddressContainer";
 
-const aaaaaa: React.FC = () => {
-	return <div>hello</div>;
-};
-
-export default aaaaaa;
+export default FindAddressContainer;

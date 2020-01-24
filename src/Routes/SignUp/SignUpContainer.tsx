@@ -2,9 +2,10 @@ import { useMutation } from "@apollo/react-hooks";
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useInput } from "../../hooks";
+import Routes from "..";
 import { USER_LOG_IN } from "../../SharedQueries.local";
 import { EmailSignUp, EmailSignUpVariables } from "../../types/api";
+import { useInput } from "../../utils/hooks";
 import SignUpPresenter from "./SignUpPresenter";
 import { EMAIL_SIGN_UP } from "./SignUpQueries";
 
@@ -12,7 +13,7 @@ interface IProps extends RouteComponentProps {}
 
 const SignUpContainer: React.FC<IProps> = ({ history, location }) => {
 	if (!location.state && !location.state.phoneNumber) {
-		history.push("/");
+		history.push(Routes.HOME);
 	}
 
 	const [firstName, setFirstName] = useInput("");
@@ -29,8 +30,7 @@ const SignUpContainer: React.FC<IProps> = ({ history, location }) => {
 		EmailSignUp,
 		EmailSignUpVariables
 	>(EMAIL_SIGN_UP, {
-		onCompleted: ({ EmailSignUp: EmailSignUpResult }) => {
-			const { res, error, token } = EmailSignUpResult;
+		onCompleted: ({ EmailSignUp: { res, error, token } }) => {
 			if (res) {
 				if (token) {
 					toast.success(`Welcome ${firstName}`);
@@ -38,6 +38,8 @@ const SignUpContainer: React.FC<IProps> = ({ history, location }) => {
 				} else {
 					toast.error("something went wrong!");
 				}
+			} else {
+				toast.error(error);
 			}
 		},
 		variables: {

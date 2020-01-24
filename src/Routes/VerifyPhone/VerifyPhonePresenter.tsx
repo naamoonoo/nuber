@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../Components/Button";
 import Header from "../../Components/Header";
-import { useTitle } from "../../hooks";
+import { useTitle } from "../../utils/hooks";
 import * as S from "./VerifyPhoneStyle";
 
 interface IProps {
@@ -25,7 +25,6 @@ const VerifyPhonePresenter: React.FC<IProps> = ({
 				<S.InputExtended value={value} onChange={onChange} />
 				<Button
 					value={loading ? "verifying..." : "submit"}
-					onClick={submitFn}
 					disabled={loading}
 				/>
 			</S.FormExtended>

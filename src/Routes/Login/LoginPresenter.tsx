@@ -1,11 +1,10 @@
 import React from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
-import { useTitle } from "../../hooks";
+import Routes from "..";
+import { useTitle } from "../../utils/hooks";
 import * as S from "./LoginStyle";
 
-interface IProps extends RouteComponentProps {}
-
-const LoginPresenter: React.FC<IProps> = () => {
+const LoginPresenter: React.FC = () => {
 	useTitle("Login | Nuber");
 	return (
 		<S.Container>
@@ -15,7 +14,7 @@ const LoginPresenter: React.FC<IProps> = () => {
 				</S.Logo>
 			</S.Header>
 			<S.Footer>
-				<Link to={"/phone-login"}>
+				<Link to={Routes.PHONE_LOGIN}>
 					<S.PhoneLogin>
 						<S.SubTitle>Go everywhere with Nuber</S.SubTitle>
 						<S.FakeInput>
@@ -24,7 +23,7 @@ const LoginPresenter: React.FC<IProps> = () => {
 						</S.FakeInput>
 					</S.PhoneLogin>
 				</Link>
-				<Link to={"/social-login"}>
+				<Link to={Routes.SOCIAL_LOGIN}>
 					<S.SocialLogin>
 						<S.SocialLink>or connect with facebook</S.SocialLink>
 					</S.SocialLogin>
