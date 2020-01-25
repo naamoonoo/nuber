@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c786075c2c21b60a482773eef9fa099d",
+    "revision": "2935f6d19cc50d6d821b12bfa4c55a15",
     "url": "/nuber_client/index.html"
   },
   {
-    "revision": "1a9883354d44f0fda23a",
+    "revision": "4bd141468b760dade3ff",
     "url": "/nuber_client/static/css/2.c829125e.chunk.css"
   },
   {
-    "revision": "1a9883354d44f0fda23a",
-    "url": "/nuber_client/static/js/2.ab2d12f9.chunk.js"
+    "revision": "4bd141468b760dade3ff",
+    "url": "/nuber_client/static/js/2.dc93fca0.chunk.js"
   },
   {
     "revision": "335932bcfe373407d7c8acc8ad15eddd",
-    "url": "/nuber_client/static/js/2.ab2d12f9.chunk.js.LICENSE"
+    "url": "/nuber_client/static/js/2.dc93fca0.chunk.js.LICENSE"
   },
   {
-    "revision": "a77ae9cf6dd527462826",
-    "url": "/nuber_client/static/js/main.882fea12.chunk.js"
+    "revision": "00d478f94e83c2cc7edd",
+    "url": "/nuber_client/static/js/main.a6a0392b.chunk.js"
   },
   {
     "revision": "238fdb81c93d6078164c",
