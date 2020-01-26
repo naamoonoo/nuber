@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/nuber_client/static/js/main.a6a0392b.chunk.js",
-    "main.js.map": "/nuber_client/static/js/main.a6a0392b.chunk.js.map",
+    "main.js": "/nuber_client/static/js/main.ac513c79.chunk.js",
+    "main.js.map": "/nuber_client/static/js/main.ac513c79.chunk.js.map",
     "runtime-main.js": "/nuber_client/static/js/runtime-main.febbeefc.js",
     "runtime-main.js.map": "/nuber_client/static/js/runtime-main.febbeefc.js.map",
     "static/css/2.c829125e.chunk.css": "/nuber_client/static/css/2.c829125e.chunk.css",
-    "static/js/2.dc93fca0.chunk.js": "/nuber_client/static/js/2.dc93fca0.chunk.js",
-    "static/js/2.dc93fca0.chunk.js.map": "/nuber_client/static/js/2.dc93fca0.chunk.js.map",
+    "static/js/2.0a79ba60.chunk.js": "/nuber_client/static/js/2.0a79ba60.chunk.js",
+    "static/js/2.0a79ba60.chunk.js.map": "/nuber_client/static/js/2.0a79ba60.chunk.js.map",
     "index.html": "/nuber_client/index.html",
-    "precache-manifest.75fe8951bea8f05101310d94810a4107.js": "/nuber_client/precache-manifest.75fe8951bea8f05101310d94810a4107.js",
+    "precache-manifest.5dbd61b66790321e9f0a522e30ee576e.js": "/nuber_client/precache-manifest.5dbd61b66790321e9f0a522e30ee576e.js",
     "service-worker.js": "/nuber_client/service-worker.js",
     "static/css/2.c829125e.chunk.css.map": "/nuber_client/static/css/2.c829125e.chunk.css.map",
-    "static/js/2.dc93fca0.chunk.js.LICENSE": "/nuber_client/static/js/2.dc93fca0.chunk.js.LICENSE",
+    "static/js/2.0a79ba60.chunk.js.LICENSE": "/nuber_client/static/js/2.0a79ba60.chunk.js.LICENSE",
     "static/media/add.ce98de71.svg": "/nuber_client/static/media/add.ce98de71.svg",
     "static/media/addEmpty.e39814da.svg": "/nuber_client/static/media/addEmpty.e39814da.svg",
     "static/media/backArrow.0c50775d.svg": "/nuber_client/static/media/backArrow.0c50775d.svg",
@@ -25,7 +25,7 @@
   "entrypoints": [
     "static/js/runtime-main.febbeefc.js",
     "static/css/2.c829125e.chunk.css",
-    "static/js/2.dc93fca0.chunk.js",
-    "static/js/main.a6a0392b.chunk.js"
+    "static/js/2.0a79ba60.chunk.js",
+    "static/js/main.ac513c79.chunk.js"
   ]
 }
