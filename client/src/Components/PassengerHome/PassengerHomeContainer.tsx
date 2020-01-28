@@ -18,7 +18,8 @@ import {
 	generateMarker,
 	getAddress,
 	getGeoCode,
-	ICoords
+	ICoords,
+	renderPath
 } from "../../utils/mapHelpers";
 import PassengerHomePresenter from "./PassengerHomePresenter";
 import {
@@ -37,6 +38,7 @@ export interface IRideVariables {
 	distance: string;
 	duration: string;
 	price: number;
+	rideImage: string;
 }
 
 const PassengerHomeContainer: React.FC<IProps> = ({
@@ -49,6 +51,9 @@ const PassengerHomeContainer: React.FC<IProps> = ({
 	const [driverMarkers, setDriverMarkers] = useState<google.maps.Marker[]>(
 		[]
 	);
+	const [directionRender, setDirectionRender] = useState<
+		google.maps.DirectionsRenderer
+	>();
 	const [reqButtonShow, setReqButtonShow] = useState(false);
 	const [rideRequested, setrideRequested] = useState(false);
 	const [pickUpAddress, setPickUpAddress] = useState("");
@@ -56,7 +61,8 @@ const PassengerHomeContainer: React.FC<IProps> = ({
 	const [rideVariables, setRideVariables] = useState<IRideVariables>({
 		distance: "",
 		duration: "",
-		price: 0
+		price: 0,
+		rideImage: ""
 	});
 	const [placeCoords, setPlaceCoords] = useState<ICoords>({ lat: 0, lng: 0 });
 	const [addMode, setAddMode] = useState(false);
@@ -140,6 +146,7 @@ const PassengerHomeContainer: React.FC<IProps> = ({
 	>(REQUEST_RIDE, {
 		onCompleted: ({ RequestRide }) => {
 			const { ride } = RequestRide;
+			console.log(ride);
 			if (ride) {
 				setRideId(ride.id);
 				fetchRideStatus();
@@ -214,45 +221,25 @@ const PassengerHomeContainer: React.FC<IProps> = ({
 			bounds.extend(userCoords);
 			bounds.extend(targetGeoCode);
 			map.fitBounds(bounds);
-			renderPath(targetGeoCode);
+			if (directionRender) {
+				directionRender.setMap(null);
+			}
+			renderPath(map, userCoords, targetGeoCode, onRenderSuccess);
 		}
 	};
 
-	const renderPath = (targetGeoCode: ICoords) => {
-		const renderOption: google.maps.DirectionsRendererOptions = {
-			polylineOptions: {
-				strokeColor: "#000" // black
-			},
-			suppressMarkers: true
-		};
-		const directionRender = new google.maps.DirectionsRenderer(
-			renderOption
-		);
-		directionRender.setMap(null);
-		const directionService = new google.maps.DirectionsService();
-		const destination = new google.maps.LatLng(userCoords);
-		const origin = new google.maps.LatLng(targetGeoCode);
-		const directionServiceOption: google.maps.DirectionsRequest = {
-			destination,
-			origin,
-			travelMode: google.maps.TravelMode.DRIVING
-		};
-		directionService.route(directionServiceOption, (result, status) => {
-			if (status === google.maps.DirectionsStatus.OK) {
-				const { routes } = result;
-				const {
-					distance: { text: distance },
-					duration: { text: duration }
-				} = routes[0].legs[0];
-				const price = parseFloat(distance.split(" ")[0]) * 2;
-				setRideVariables({ distance, duration, price });
-				directionRender.setDirections(result);
-				if (map) {
-					directionRender.setMap(map);
-					setReqButtonShow(true);
-				}
-			}
-		});
+	const onRenderSuccess = (
+		routes: google.maps.DirectionsRoute[],
+		directionRenderer: google.maps.DirectionsRenderer
+	) => {
+		const {
+			distance: { text: distance },
+			duration: { text: duration }
+		} = routes[0].legs[0];
+		const price = parseFloat(distance.split(" ")[0]) * 2;
+		setRideVariables({ ...rideVariables, distance, duration, price });
+		setReqButtonShow(true);
+		setDirectionRender(directionRenderer);
 	};
 
 	const onClickHandlerByAddMode = async () => {
@@ -280,6 +267,7 @@ const PassengerHomeContainer: React.FC<IProps> = ({
 			rideId={rideId}
 			stopPolling={stopPolling}
 			cancelRideMutation={cancelRideMutation}
+			setRideVariables={setRideVariables}
 		/>
 	);
 };

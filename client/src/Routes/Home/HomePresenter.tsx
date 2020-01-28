@@ -37,7 +37,12 @@ const HomePresenter: React.FC<IProps> = ({
 		zIndex: "10"
 	};
 
-	const menuIconStyle = { zIndex: "2", top: "15px", left: "1vw" };
+	const menuIconStyle = {
+		left: "1vw",
+		position: "relative",
+		top: "15px",
+		zIndex: "5"
+	};
 
 	return (
 		<S.Contaier>
@@ -60,7 +65,7 @@ const HomePresenter: React.FC<IProps> = ({
 					userCoords={userCoords}
 				/>
 			)}
-			<Maps setMap={setMap} />
+			<Maps setMap={setMap} isHome={true} />
 		</S.Contaier>
 	);
 };
