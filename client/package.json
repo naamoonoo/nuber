@@ -32,15 +32,11 @@
     "react-scripts": "3.3.0",
     "react-sidebar": "^3.0.2",
     "react-toastify": "^5.5.0",
+    "serialize-javascript": "^2.1.2",
     "styled-components": "^4.4.1",
     "styled-reset": "^4.0.9",
     "subscriptions-transport-ws": "^0.9.16",
     "typescript": "~3.7.2"
-  },
-  "husky": {
-    "hooks": {
-      "prepare-commit-msg": "./scripts/add_issue_number_into_commit.sh $HUSKY_GIT_PARAMS"
-    }
   },
   "scripts": {
     "start": "react-scripts start",
@@ -70,7 +66,7 @@
   "devDependencies": {
     "@types/google-maps": "^3.2.1",
     "@types/google-maps-react": "^2.0.3",
-    "husky": "^4.0.7",
+    "@types/react-scroll": "^1.5.4",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.1.0"

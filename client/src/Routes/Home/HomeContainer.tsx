@@ -13,16 +13,11 @@ import { generateMarker, ICoords } from "../../utils/mapHelpers";
 import HomePresenter from "./HomePresenter";
 import { REPORT_MOVEMENT } from "./HomeQueries";
 
-// Warning: Can't perform a React state update on an unmounted component.
-// This is a no-op, but it indicates a memory leak in your application.
-// To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
-//     in HomeContainer (created by Context.Consumer)
 interface IProps extends RouteComponentProps {}
 
 const HomeContainer: React.FC<IProps> = ({ history }) => {
 	const [map, setMap] = useState<google.maps.Map>();
 	const [userMarker, setUserMarker] = useState<google.maps.Marker>();
-	const [isSideOpen, setIsSideOpen] = useState(false);
 	const [userCoords, setUserCoords] = useState<ICoords>({ lat: 0, lng: 0 });
 
 	const { data: userData } = useQuery<GetCurrentUser>(GET_CURRENT_USER, {
@@ -50,14 +45,6 @@ const HomeContainer: React.FC<IProps> = ({ history }) => {
 		}
 	});
 
-	// const screenCapture = html2canvas(document.body).then(canvas => {
-	// 	// Export the canvas to its data URI representation
-	// 	const base64image = canvas.toDataURL("image/png");
-
-	// 	// Open the image in a new window
-	// 	window.open(base64image, "_blank");
-	// });
-
 	useEffect(() => {
 		if (map) {
 			const { lat: getLat, lng: getLng } = map.getCenter();
@@ -77,7 +64,7 @@ const HomeContainer: React.FC<IProps> = ({ history }) => {
 
 	useEffect(() => {
 		if (userMarker && map) {
-			navigator.geolocation.watchPosition(
+			const watchId = navigator.geolocation.watchPosition(
 				position => {
 					const {
 						coords: { latitude: lat, longitude: lng }
@@ -91,6 +78,9 @@ const HomeContainer: React.FC<IProps> = ({ history }) => {
 				},
 				{ enableHighAccuracy: true }
 			);
+			return () => {
+				navigator.geolocation.clearWatch(watchId);
+			};
 		}
 	}, [map, userMarker, setUserCoords, reportMovementMutation]);
 
@@ -100,8 +90,6 @@ const HomeContainer: React.FC<IProps> = ({ history }) => {
 			userMarker={userMarker}
 			userCoords={userCoords}
 			userData={userData}
-			openStatus={isSideOpen}
-			toggleSideBar={() => setIsSideOpen(!isSideOpen)}
 			setMap={setMap}
 		/>
 	);
