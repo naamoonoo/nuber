@@ -65,7 +65,7 @@
     "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^2.0.0",
     "pg": "^7.16.0",
-    "serialize-javascript": "^2.1.2",
+    "serialize-javascript": "^3.1.0",
     "twilio": "^3.39.1",
     "typeorm": "^0.2.22"
   }
