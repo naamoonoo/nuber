@@ -67,6 +67,6 @@
     "pg": "^7.16.0",
     "serialize-javascript": "^2.1.2",
     "twilio": "^3.39.1",
-    "typeorm": "^0.2.22"
+    "typeorm": "^0.2.25"
   }
 }
